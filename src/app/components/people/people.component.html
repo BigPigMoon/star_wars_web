@@ -1,0 +1,32 @@
+<div *ngIf="loading" class="card w-64 h-80 bg-base-300 shadow-xl m-2">
+  <div class="flex items-center h-full justify-center">
+    <span class="loading loading-infinity loading-lg text-info"></span>
+  </div>
+</div>
+
+<div *ngIf="people && visible" class="card w-64 h-80 bg-base-300 shadow-xl m-2">
+  <div class="card-body">
+    <h2 class="card-title">{{ people.name }}</h2>
+    <p>
+      Height: <span class="font-bold">{{ people.height | numberorNot:'cm' }}</span>
+    </p>
+    <p>
+      Mass: <span class="font-bold">{{ people.mass | numberorNot:'kg' }}</span>
+    </p>
+    <p>
+      Hair color: <span class="font-bold">{{ people.hair_color }}</span>
+    </p>
+    <p>
+      Skin color: <span class="font-bold">{{ people.skin_color }}</span>
+    </p>
+    <p>
+      Eye color: <span class="font-bold">{{ people.eye_color }}</span>
+    </p>
+    <p>
+      Birth year: <span class="font-bold">{{ people.birth_year | birthday }}</span>
+    </p>
+    <p>
+      Gender: <span class="font-bold">{{ people.gender }}</span>
+    </p>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="card w-full rounded-2xl bg-base-300 shadow-md h-full">
+  <div class="card-body w-full">
+    <h2 class="card-title">{{ planet.name }}</h2>
+
+    <div class="flex w-full" [ngClass]="colum ? 'flex-col' : 'flex-col lg:flex-row'">
+      <div
+        class="grid flex-grow card p-3"
+      >
+        <p>
+          Diameter: <span class="font-bold">{{ planet.diameter | numberorNot:'km'}}</span>
+        </p>
+        <p>Rotation Period: <span class="font-bold">{{ planet.rotation_period | numberorNot:'hours'}}</span></p>
+        <p>Orbital Period: <span class="font-bold">{{ planet.orbital_period | numberorNot:'days'}}</span></p>
+        <p>Gravity: <span class="font-bold">{{ planet.gravity }}</span></p>
+      </div>
+    
+      <div
+        class="grid flex-grow card p-3"
+      >
+        <p>Population: <span class="font-bold">{{ planet.population }} inhabitants</span></p>
+        <p>Climate: <span class="font-bold">{{ planet.climate }}</span></p>
+        <p>Terrain: <span class="font-bold">{{ planet.terrain }}</span></p>
+        <p>Surface Water: <span class="font-bold">{{ planet.surface_water | numberorNot:'%' }}</span></p>
+      </div>
+    </div>
+
+    <div class="card-actions">
+      <button (click)="details()" class="btn btn-primary" [ngClass]="{'hidden': !showDetails}">See details</button>
+    </div>
+  </div>
+</div>

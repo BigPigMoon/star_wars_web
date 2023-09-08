@@ -1,0 +1,65 @@
+<div *ngIf="loading" class="flex items-center justify-center h-screen">
+  <span class="loading loading-infinity loading-lg text-info"></span>
+</div>
+
+<div *ngIf="!loading" class="flex flex-col w-full items-center p-4">
+  <div class="flex flex-col space-y-4 xl:w-5/12">
+    <app-planet
+      *ngFor="let planet of planets"
+      [planet]="planet"
+      [colum]="false"
+    ></app-planet>
+
+    <div class="flex flex-row justify-between w-full px-10 pt-8">
+      <div *ngIf="!prevPageAvaible"></div>
+      <button
+        *ngIf="prevPageAvaible"
+        (click)="decPage()"
+        class="btn normal-case"
+      >
+        <svg
+          class="h-6 w-6 fill-current md:h-8 md:w-8"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z"
+          ></path>
+        </svg>
+        <div class="flex flex-col items-start">
+          <span class="text-base-content/50 hidden text-xs font-normal md:block"
+            >Prev</span
+          >
+          <span>{{ page - 1 }}</span>
+        </div>
+      </button>
+      <div *ngIf="!nextPageAvaible"></div>
+      <button
+        *ngIf="nextPageAvaible"
+        class="btn btn-neutral normal-case"
+        (click)="incPage()"
+      >
+        <div class="flex flex-col items-start">
+          <span
+            class="text-neutral-content/50 hidden text-xs font-normal md:block"
+            >Next</span
+          >
+          <span>{{ page + 1 }}</span>
+        </div>
+        <svg
+          class="h-6 w-6 fill-current md:h-8 md:w-8"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
+          ></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
